@@ -1,0 +1,222 @@
+---
+name: Ivan
+surname: Plyushchenko
+position: ""
+address: ""
+profilepic: ""
+email: "plyushchenko.ivan@gmail.com"
+github: plyush1993
+www: orcid.org/0000-0003-3883-4695
+date: "`r format(Sys.time(), '%B %Y')`"
+docname: CV
+output: 
+  vitae::twentyseconds
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
+library(vitae)
+```
+
+# Education
+
+```{r}
+library(tibble)
+tribble(
+  ~ Degree, ~ Year, ~ Institution, ~ Where,
+  "Doctor of Philosophy (Chemistry)", "2017-22", "Lomonosov Moscow State University", "Moscow, Russia",
+   "Postgraduate academic and pedagogical training (Chemistry)", "2017-21", "Lomonosov Moscow State University", "Moscow, Russia",
+  "Specialist in Chemistry (equivalent to MSc), GPA: 4.67", "2011-17", "Lomonosov Moscow State University", "Moscow, Russia"
+) %>% 
+  detailed_entries(Degree, Year, Institution, Where)
+```
+
+# Key Publications
+
+```{r}
+library(scholar)
+library(stringr)
+library(tibble)
+library(ggthemes)
+library(ggplot2)
+id <- 'Mz4nxtwAAAAJ'
+p1 <- get_publications(id)
+ct <- get_citation_history(id)
+y <- unique(p1[order(p1$year, decreasing = F),]$year)
+p <- p1[,c(2, 1, 3, 6, 4, 5)]
+p$cites <- paste0("[Citations: ", p$cites, "]")
+p <- p[order(p$year, decreasing = T),]
+p <- p[-which(str_detect(p$title, "Combining Chromatography–Mass Spectrometry")),] # delete duplicated 
+p <- filter(p, journal %in% c("Analytical Methods", "Metabolites", 
+                              "Analytical and Bioanalytical Chemistry", 
+                              "Journal of Chromatography A", "Journal of Proteome Research"))
+p %>% 
+  detailed_entries(
+    what = title,
+    when = year,
+    with = author,
+    where = journal
+  )
+```
+
+# Certificates
+
+```{r}
+library(tibble)
+tribble(
+  ~ Certificate, ~ Year, ~ Organization, ~ Hours, 
+  "Data Science 201: Going Further With R: Tackling Clinical Laboratory Data Manipulation and Modeling", "2019", "The Association for Mass Spectrometry & Advances in the Clinical Lab (MSACL) Conference EU", "16 hrs",
+  "Metabolomics 202: Approaches, Applications and Challenges", "2017", "The Association for Mass Spectrometry & Advances in the Clinical Lab (MSACL) Conference EU", "16 hrs"
+) %>% 
+  detailed_entries(Certificate, Year, Organization, Hours)
+```
+
+# Grants and awards
+
+```{r}
+library(tibble)
+tribble(
+  ~ Grant, ~ Year, ~ Role, ~ Time,
+  "Russian Foundation for Basic Research", "2018-22", "Participant", "3 grants",
+  "Russian Science Foundation", "2017-21", "Participant", "2 grants"
+) %>% 
+  detailed_entries(Grant, Year, Role, Time)
+```
+
+```{r}
+library(tibble)
+tribble(
+  ~ Award, ~ Year, ~ Place,
+  "Competition of the Russian Academy of Sciences of scientific works of young scientists in chromatography in honor of the 150th anniversary of the birth M.S. Tsvet", "2022", "Moscow, Russia",
+  "The Association for Mass Spectrometry & Advances in the Clinical Lab (MSACL) Conference EU Travel Grant", "2019", "Salzburg, Austria",
+  "International Mass Spectrometry Conference Fellowship", "2018", "Florence, Italy",
+  "The Association for Mass Spectrometry & Advances in the Clinical Lab (MSACL) Conference EU Travel Grant", "2017", "Salzburg, Austria"
+) %>% 
+  detailed_entries(Award, Year, Place)
+```
+
+# Professional Experience
+
+```{r}
+library(tibble)
+tribble(
+  ~ Job, ~ Year, ~ Role,
+  "Junior research associate", "2019-22", "Lomonosov Moscow State University",
+  "Lab technician", "2016-19", "Lomonosov Moscow State University",
+  "Analytical chemist", "2015-18", "Analytical centre of Lomonosov Moscow State University"
+) %>% 
+  detailed_entries(Job, Year, Role)
+```
+
+# Skills & proficiencies
+
+Instruments & techniques:
+
+- MS: SCAN, SIM, MRM, DDA, DIA
+- LC: RP, HILIC
+- LC-MS (IT-TOF, Shimadzu; Orbitrap Exploris 120, Thermo; QTRAP 3200, Sciex; 6470, Agilent)
+- LC-DAD (1100/1200/1290 Infinity, Agilent; Ultimate 3000, Dionex; LC 20, Shimadzu; Vanquish, Thermo)
+- LC-FLD (1200, Agilent; Ultimate 3000, Dionex)
+- CE-UV (7100, Agilent)
+- GC-MS (GCMS-QP 2010 with SHS, Shimadzu; 7890 B, Agilent)
+- GC-FID (GC-2010, Shimadzu)
+
+
+Basic lab skills:
+
+- Extraction from liquid & solid media
+- SPE, LLE, Soxhlet extraction, centrifugation, membrane filtering
+- UV/Vis analysis, pH measurement 
+- Preparation of calibration curves, QC/QA programs performing, daily maintenance
+
+Programming, Software & Bioinformatics tools:
+
+- R language independent user
+- tidyverse family of packages
+- xcms, CAMERA, IPO, MSnbase, caret, H2O, keras, ggplot2
+- tool development list: [URL](https://github.com/plyush1993?tab=repositories)
+- full list of R packages that is used for metabolomics processing: [URL](https://github.com/plyush1993/OUKS/blob/main/Used%20packages.pdf)
+- GUI software: MetaboAnalyst, MS-DIAL, MZmine, MS-FINDER, SIRIUS+CSI:FingerID, CFM-ID, MetFrag, GNPS
+- Vendor Software: LabSolutions (Shimadzu); XCalibur, FreeStyle, Compound Discoverer (Thermo); OpenLab, MassHunter, ChemStation (Agilent)
+
+```
+```
+
+# Teaching and mentorship
+
+```{r}
+library(tibble)
+tribble(
+  ~ Course, ~ Year,
+  "Mentoring undergraduates students of Lomonosov
+Moscow State University, Faculty of Chemistry, including two students' thesis supervision", "2018-22",
+  "Practical and theoretical classes on analytical chemistry for students of Lomonosov
+Moscow State University, Faculty of Biology", "2018-20",
+"Agilent advanced training courses at the Analytical centre of Lomonosov Moscow State University on LC, LC-MS", "2016-19"
+) %>% 
+  detailed_entries(with = Course, what = Year)
+```
+
+# Current journal roles
+
+```{r}
+library(tibble)
+tribble(
+  ~ Journal, ~ Current_journal_roles,
+  "Biomedical Chromatography", "Peer Reviewer",
+  "Russian Journal of Analytical Chemistry", "Peer Reviewer"
+) %>% 
+  detailed_entries(with = Current_journal_roles, what = Journal)
+```
+
+# Publication list
+
+```{r}
+library(scholar)
+library(stringr)
+library(tibble)
+library(ggthemes)
+library(ggplot2)
+id <- 'Mz4nxtwAAAAJ'
+p1 <- get_publications(id)
+ct <- get_citation_history(id)
+y <- unique(p1[order(p1$year, decreasing = F),]$year)
+p <- p1[,c(2, 1, 3, 6, 4, 5)]
+p$cites <- paste0("[Citations: ", p$cites, "]")
+p <- p[order(p$year, decreasing = T),]
+p <- p[-which(str_detect(p$title, "Combining Chromatography–Mass Spectrometry")),] # delete duplicated 
+p %>% 
+  detailed_entries(
+    what = title,
+    when = year,
+    with = author,
+    where = journal
+  )
+```
+
+# Conferences
+
+```{r}
+library(tibble)
+tribble(
+  ~ Title, ~ Conference, ~ Date,
+  "Application of gradient boosting machine for signal processing in LC-MS metabolomics", 
+  "13th Winter Symposium on Chemometrics, Russia", "2022",
+  "Untargeted metabolomics study of Humulus lupulus brewing cultivars, for genetic origin classification task", 
+  "13th Winter Symposium on Chemometrics, Russia", "2022",
+  "Describing metabolome diversity between Humulus lupulus genetic origin groups using UHPLC-MS/MS", 
+  "The 69th Annual Conference on Mass Spectrometry of MSSJ, Japan", "2021",
+  "Humulus lupulus LC-MS untargeted profiling study for geographic origin classification task", 
+  "4th International Symposium on Phytochemicals in Medicine and Food, Xi'an, China", "2020",
+  "Comparison of the kinetics of dyes degradation of handwritten strokes subjected to different types of artificial aging and studied using chromatography mass-spectrometry and statistical data processing", 
+  "48th International Symposium on High-Performance Liquid Phase Separations and Related Techniques, Milan, Italy", "2019", 
+  "Bioassay Classification Study via LC-MS and Machine Learning in Conjunction with Dimensionality Reduction", 
+  "MSACL 2019 EU, Salzburg, Austria", "2019",
+   "Typical LC-MS metabolomics workflow for profiling urine samples of patients with colorectal cancer", 
+  "XXII International Mass Spectrometry Conference, Florence, Italy", "2018",
+  "Simple & Robust Approach in Urinary Metabolomics Based on UPLC-MS for Preoperative Colorectal Cancer Diagnostics", "MSACL 2017 EU, Salzburg, Austria", "2017",
+  "Complexation of sulfo-β-cyclodextrin with fenoterol. Electrophoretic and spectroscopic study", 
+  "VIIIth International Symposium Design and Synthesis of Supramolecular Architectures, Kazan, Russia", "2016" 
+) %>% 
+  detailed_entries(with = Conference, what = Title, when = Date)
+```
