@@ -117,7 +117,6 @@ y <- unique(p1[order(p1$year, decreasing = F),]$year)
 p <- p1[,c(2, 1, 3, 6, 4, 5)]
 p$cites <- paste0("[Citations: ", p$cites, "]")
 p <- p[order(p$year, decreasing = T),]
-p <- p[-which(str_detect(p$title, "Combining Chromatography–Mass Spectrometry")),] # delete duplicated 
 p %>% 
   detailed_entries(
     what = title,
