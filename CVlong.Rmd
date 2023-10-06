@@ -133,7 +133,7 @@ Programming, Software & Bioinformatics tools:
 
 - R language independent user
 - tidyverse, tidymass, RforMassSpectrometry families of packages
-- xcms, CAMERA, IPO, MSnbase, tidyproteomics, Biostrings, rcdk, caret, H2O, keras, ggplot2, dplyr, data.table, RMarkdown 
+- xcms, CAMERA, IPO, MSnbase, MSstats, Biostrings, rcdk, caret, H2O, keras, ggplot2, dplyr, data.table, RMarkdown 
 - tool development list: [URL](https://github.com/plyush1993?tab=repositories)
 - full list of R packages that is used for metabolomics processing: [URL](https://github.com/plyush1993/OUKS/blob/main/Used%20packages.pdf)
 - GUI software: MetaboAnalyst, MS-DIAL, MZmine, MS-FINDER, SIRIUS+CSI:FingerID, CFM-ID, MetFrag, GNPS, Open Babel, FragPipe, DIA-NN
@@ -200,6 +200,8 @@ p %>%
 library(tibble)
 tribble(
   ~ Title, ~ Conference, ~ Date,
+  "Untargeted urinary metabolomics for identification of bladder cancer biomarkers using HPLC-MS",
+  "Euroanalysis XXI, Geneva, Switzerland", "2023",
   "Application of gradient boosting machine for signal processing in LC-MS metabolomics", 
   "13th Winter Symposium on Chemometrics, Russia", "2022",
   "Untargeted metabolomics study of Humulus lupulus brewing cultivars, for genetic origin classification task", 
