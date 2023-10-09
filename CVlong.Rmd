@@ -112,14 +112,15 @@ tribble(
 
 Instruments & techniques:
 
-- MS: SCAN, SIM, MRM, DDA, DIA
+- MS: SCAN, SIM, MRM, DDA, DIA, PASEF, TIMS
 - LC: RP, HILIC
-- LC-MS (IT-TOF, Shimadzu; Orbitrap Exploris 120, Orbitrap Q Exactive, Thermo; QTRAP 3200, Sciex; 6470, Agilent)
-- LC-DAD (1100/1200/1290 Infinity, Agilent; Ultimate 3000, Dionex; LC 20, Shimadzu; Vanquish, Thermo)
-- LC-FLD (1200, Agilent; Ultimate 3000, Dionex)
-- CE-UV (7100, Agilent)
-- GC-MS (GCMS-QP 2010 with SHS, Shimadzu; 7890 B, Agilent)
-- GC-FID (GC-2010, Shimadzu)
+- Nano LC: Evosep One (Evosep)
+- LC-MS: IT-TOF (Shimadzu); Orbitrap Exploris 120, Orbitrap Q Exactive (Thermo); QTRAP 3200 (Sciex); 6470 (Agilent); timsTOF Pro (Bruker)
+- LC-DAD: 1100, 1200, 1290 Infinity (Agilent); Ultimate 3000 (Dionex); LC 20 (Shimadzu); Vanquish (Thermo)
+- LC-FLD: 1200 (Agilent); Ultimate 3000 (Dionex)
+- CE-UV: G1600AX, 7100 (Agilent)
+- GC-MS: GCMS-QP 2010 with SHS (Shimadzu); 7890 B (Agilent)
+- GC-FID: GC-2010 (Shimadzu)
 
 Basic lab skills:
 
@@ -133,11 +134,11 @@ Programming, Software & Bioinformatics tools:
 
 - R language independent user
 - tidyverse, tidymass, RforMassSpectrometry families of packages
-- xcms, CAMERA, IPO, MSnbase, MSstats, Biostrings, rcdk, caret, H2O, keras, ggplot2, dplyr, data.table, RMarkdown 
+- xcms, CAMERA, IPO, MSnbase, MSstats, Biostrings, seqinr, rcdk, caret, H2O, keras, xgboost, ggplot2, dplyr, data.table, RMarkdown 
 - tool development list: [URL](https://github.com/plyush1993?tab=repositories)
 - full list of R packages that is used for metabolomics processing: [URL](https://github.com/plyush1993/OUKS/blob/main/Used%20packages.pdf)
-- GUI software: MetaboAnalyst, MS-DIAL, MZmine, MS-FINDER, SIRIUS+CSI:FingerID, CFM-ID, MetFrag, GNPS, Open Babel, FragPipe, DIA-NN
-- Vendor Software: LabSolutions (Shimadzu); XCalibur, FreeStyle, Compound Discoverer (Thermo); OpenLab, MassHunter, ChemStation (Agilent)
+- GUI software: MetaboAnalyst, MS-DIAL, MZmine, MS-FINDER, SIRIUS+CSI:FingerID, CFM-ID, MetFrag, GNPS, Open Babel, FragPipe, DIA-NN, Alphapept
+- Vendor Software: LabSolutions (Shimadzu); XCalibur, FreeStyle, Compound Discoverer (Thermo); OpenLab, MassHunter, ChemStation (Agilent); Compass HyStar, OtofControl (Bruker)
 
 ```
 ```
