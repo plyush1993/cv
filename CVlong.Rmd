@@ -166,7 +166,8 @@ tribble(
   ~ Journal, ~ Current_journal_roles,
   "Biomedical Chromatography", "Peer Reviewer",
   "Journal of Analytical Chemistry", "Peer Reviewer", 
-  "BMC Medicine", "Peer Reviewer"
+  "BMC Medicine", "Peer Reviewer",
+  "Journal of Food Composition and Analysis", "Peer Reviewer"
 ) %>% 
   detailed_entries(with = Current_journal_roles, what = Journal)
 ```
