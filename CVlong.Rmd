@@ -24,10 +24,10 @@ library(vitae)
 library(tibble)
 tribble(
   ~ Degree, ~ Year, ~ Institution, ~ Where,
+  "Doctor of Philosophy (Biology)", "2022-now", "Technion - Israel Institute of Technology", "Haifa, Israel",
   "Doctor of Philosophy (Chemistry)", "2017-22", "Lomonosov Moscow State University", "Moscow, Russia",
    "Postgraduate academic and pedagogical training (Chemistry)", "2017-21", "Lomonosov Moscow State University", "Moscow, Russia",
-  "Specialist in Chemistry (equivalent to MSc), GPA: 4.67", "2011-17", "Lomonosov Moscow State University", "Moscow, Russia",
-  "Doctor of Philosophy (Biology)", "2022-now", "Technion - Israel Institute of Technology", "Haifa, Israel"
+  "Specialist in Chemistry (equivalent to MSc), GPA: 4.67", "2011-17", "Lomonosov Moscow State University", "Moscow, Russia"
 ) %>% 
   detailed_entries(Degree, Year, Institution, Where)
 ```
