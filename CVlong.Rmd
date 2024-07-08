@@ -170,7 +170,8 @@ tribble(
   "Journal of Food Composition and Analysis", "Peer Reviewer",
   "Scientific Reports", "Peer Reviewer",
   "PLOS Computational Biology", "Peer Reviewer",
-  "BMC Infectious Diseases", "Peer Reviewer"
+  "BMC Infectious Diseases", "Peer Reviewer",
+  "PLOS One", "Peer Reviewer"
 ) %>% 
   detailed_entries(with = Current_journal_roles, what = Journal)
 ```
