@@ -124,7 +124,7 @@ Programming, Software & Bioinformatics tools:
 
 - R language independent user
 - tidyverse, tidymass, RforMassSpectrometry families of packages
-- xcms, CAMERA, IPO, MSnbase, MSstats, Biostrings, seqinr, rcdk, caret, H2O, keras, xgboost, ggplot2, dplyr, data.table, RMarkdown 
+- xcms, CAMERA, IPO, MSnbase, MSstats, Biostrings, seqinr, rcdk, caret, H2O, keras, xgboost, ggplot2, dplyr, data.table, RMarkdown, plotly 
 - tool development list: [URL](https://github.com/plyush1993?tab=repositories)
 - full list of R packages that is used for metabolomics processing: [URL](https://github.com/plyush1993/OUKS/blob/main/Used%20packages.pdf)
 - GUI software: MetaboAnalyst, MS-DIAL, MZmine, MS-FINDER, SIRIUS+CSI:FingerID, CFM-ID, MetFrag, GNPS, Open Babel, FragPipe, DIA-NN, Alphapept
@@ -171,7 +171,9 @@ tribble(
   "Scientific Reports", "Peer Reviewer",
   "PLOS Computational Biology", "Peer Reviewer",
   "BMC Infectious Diseases", "Peer Reviewer",
-  "PLOS One", "Peer Reviewer"
+  "PLOS One", "Peer Reviewer",
+  "Proteome Science", "Peer Reviewer",
+  "Journal of Proteome Research", "Peer Reviewer"
 ) %>% 
   detailed_entries(with = Current_journal_roles, what = Journal)
 ```
