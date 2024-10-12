@@ -175,7 +175,9 @@ tribble(
   "Proteome Science", "Peer Reviewer",
   "Journal of Proteome Research", "Peer Reviewer", 
   "Scientific Data", "Peer Reviewer", 
-  "BMC Bioinformatics", "Peer Reviewer"
+  "BMC Bioinformatics", "Peer Reviewer",
+  "BMC gastroenterology", "Peer Reviewer",
+  "Nutrition & metabolism", "Peer Reviewer"
 ) %>% 
   detailed_entries(with = Current_journal_roles, what = Journal)
 ```
