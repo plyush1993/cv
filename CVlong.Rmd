@@ -177,7 +177,8 @@ tribble(
   "Scientific Data", "Peer Reviewer", 
   "BMC Bioinformatics", "Peer Reviewer",
   "BMC gastroenterology", "Peer Reviewer",
-  "Nutrition & metabolism", "Peer Reviewer"
+  "Nutrition & metabolism", "Peer Reviewer",
+  "npj Systems Biology and Applications", "Peer Reviewer"
 ) %>% 
   detailed_entries(with = Current_journal_roles, what = Journal)
 ```
