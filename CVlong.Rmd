@@ -59,7 +59,7 @@ p %>%
   )
 ```
 
-# Grants and awards
+# Grants and Awards
 
 ```{r}
 library(tibble)
@@ -98,7 +98,7 @@ tribble(
   detailed_entries(Job, Year, Role)
 ```
 
-# Skills & proficiencies
+# Skills & Proficiencies
 
 Instruments & techniques:
 
@@ -143,7 +143,7 @@ tribble(
   detailed_entries(Certificate, Year, Organization, Hours)
 ```
 
-# Teaching and mentorship
+# Teaching and Mentorship
 
 ```{r}
 library(tibble)
@@ -158,7 +158,7 @@ Moscow State University, Faculty of Biology", "2018-20",
   detailed_entries(with = Course, what = Year)
 ```
 
-# Current journal roles
+# Current Journal Roles
 
 ```{r}
 library(tibble)
@@ -183,7 +183,7 @@ tribble(
   detailed_entries(with = Current_journal_roles, what = Journal)
 ```
 
-# Publication list
+# Publication List
 
 ```{r}
 library(scholar)
@@ -234,4 +234,40 @@ tribble(
   "VIIIth International Symposium Design and Synthesis of Supramolecular Architectures, Kazan, Russia", "2016" 
 ) %>% 
   detailed_entries(with = Conference, what = Title, when = Date)
+```
+
+\newpage
+# Citation Statistics and Metrics
+
+```{r, fig.width=5, fig.height=4}
+library(scholar)
+library(stringr)
+library(tibble)
+library(ggthemes)
+library(ggplot2)
+
+id <- 'Mz4nxtwAAAAJ'
+p1 <- get_publications(id)
+ct <- get_citation_history(id)
+y <- unique(p1[order(p1$year, decreasing = F),]$year)
+p <- p1[,c(2, 1, 3, 6, 4, 5)]
+p$cites <- paste0("[Citations: ", p$cites, "]")
+p <- p[order(p$year, decreasing = T),]
+pr <- get_profile(id)
+
+line1 <- paste0("h index: ", pr$h_index)
+line2 <- paste0("i10 index: ", pr$i10_index)
+line3 <- paste0("Total cites: ", pr$total_cites)
+multiline_text <- paste(line1, line2, line3, sep = "\n")
+
+library(ggtext)
+ggplot(ct, aes(year, cites)) +
+  geom_segment(aes(xend = year, yend = 0), size=1, color='darkgrey') +
+  geom_point(size=5, color="red", fill=alpha("orange", 0.3), alpha=0.7, shape=21, stroke=2.5) + 
+  annotate("rect", xmin = 2020, xmax = 2021.7, ymin = 40, ymax = 65, fill = "lightblue", alpha = 0.5) +
+  annotate("text", x = 2020, y = 52, label = multiline_text, size = 5.5, fontface = "bold", hjust = 0)+
+  xlab("Year") + ylab("Citations")+ theme_classic(base_size = 16)+
+  labs(caption = "Data Source: Google Scholar")+
+  theme(plot.caption = element_text(color = "black", face = "italic", size = 10))
+
 ```
