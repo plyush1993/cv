@@ -3,12 +3,15 @@ name: Ivan
 surname: Plyushchenko
 position: ""
 address: ""
+aboutme: ""
 profilepic: ""
 email: "plyushchenko.ivan@gmail.com"
 github: plyush1993
+linkedin: ivan-plyushchenko-3861781a1/
 www: orcid.org/0000-0003-3883-4695
 date: "`r format(Sys.time(), '%B %Y')`"
 docname: CV
+headcolor:
 output: 
   vitae::twentyseconds
 ---
@@ -24,12 +27,11 @@ library(vitae)
 library(tibble)
 tribble(
   ~ Degree, ~ Year, ~ Institution, ~ Where,
-  "Doctor of Philosophy (Biology)", "2022-now", "Technion - Israel Institute of Technology", "Haifa, Israel",
-  "Doctor of Philosophy (Chemistry)", "2017-22", "Lomonosov Moscow State University", "Moscow, Russia",
-   "Postgraduate academic and pedagogical training (Chemistry)", "2017-21", "Lomonosov Moscow State University", "Moscow, Russia",
-  "Specialist in Chemistry (equivalent to MSc), GPA: 4.67", "2011-17", "Lomonosov Moscow State University", "Moscow, Russia"
+  "PhD (Chemistry)", "2017-22", "Lomonosov Moscow State University", "Moscow, Russia",
+#   "Postgraduate academic and pedagogical training (Chemistry)", "2017-21", "Lomonosov Moscow State University", "Moscow, Russia",
+  "MSc (Chemistry), GPA: 4.67", "2011-17", "Lomonosov Moscow State University", "Moscow, Russia"
 ) %>% 
-  detailed_entries(Degree, Year, Institution, Where)
+  detailed_entries(what = Degree, when = Year, with = Institution, where = Where)
 ```
 
 # Key Publications
@@ -47,7 +49,7 @@ y <- unique(p1[order(p1$year, decreasing = F),]$year)
 p <- p1[,c(2, 1, 3, 6, 4, 5)]
 p$cites <- paste0("[Citations: ", p$cites, "]")
 p <- p[order(p$year, decreasing = T),]
-p <- filter(p, journal %in% c("Analytical Methods", "Metabolites", 
+p <- filter(p, journal %in% c("Analytical methods", "Metabolites", 
                               "Analytical and Bioanalytical Chemistry", 
                               "Journal of Chromatography A", "Journal of Proteome Research"))
 p %>% 
@@ -55,6 +57,7 @@ p %>%
     what = title,
     when = year,
     with = author,
+    #where = paste(journal, cites)
     where = journal
   )
 ```
@@ -68,7 +71,7 @@ tribble(
   "Russian Foundation for Basic Research", "2018-22", "Participant", "3 grants",
   "Russian Science Foundation", "2017-21", "Participant", "2 grants"
 ) %>% 
-  detailed_entries(Grant, Year, Role, Time)
+  detailed_entries(what = Grant, when = Year, Role, Time)
 ```
 
 ```{r}
@@ -81,7 +84,7 @@ tribble(
   "International Mass Spectrometry Conference Fellowship", "2018", "Florence, Italy",
   "The Association for Mass Spectrometry & Advances in the Clinical Lab (MSACL) Conference EU Travel Grant", "2017", "Salzburg, Austria"
 ) %>% 
-  detailed_entries(Award, Year, Place)
+  detailed_entries(what = Award, when = Year, where = Place)
 ```
 
 \newpage
@@ -90,12 +93,14 @@ tribble(
 ```{r}
 library(tibble)
 tribble(
-  ~ Job, ~ Year, ~ Role,
-  "Junior research associate", "2019-22", "Lomonosov Moscow State University",
-  "Lab technician", "2016-19", "Lomonosov Moscow State University",
-  "Analytical chemist", "2015-18", "Analytical centre of Lomonosov Moscow State University"
+  ~ Job, ~ Year, ~ Where,
+  "Graduate Researcher", "2022.12-\\\\2024.12", "Technion - Israel Institute of Technology, Biology Faculty",
+    "Postdoctoral Research Fellow", "2022.03-\\\\2022.11", "Lomonosov Moscow State University, Chemistry Department",
+  "Junior Research Associate", "2017.07-\\\\2022.02", "Lomonosov Moscow State University, Chemistry Department",
+  "Lab Technician", "2016.05-\\\\2017.06", "Lomonosov Moscow State University, Chemistry Department",
+  "Analytical Chemist", "2015.05-\\\\2018.06", "Analytical centre of Lomonosov Moscow State University"
 ) %>% 
-  detailed_entries(Job, Year, Role)
+  detailed_entries(what = Job, when = Year, where = Where, .protect=F)
 ```
 
 # Skills & Proficiencies
@@ -131,7 +136,7 @@ Programming, Software & Bioinformatics tools:
 - Vendor Software: LabSolutions (Shimadzu); XCalibur, FreeStyle, Compound Discoverer (Thermo); OpenLab, MassHunter, ChemStation (Agilent); Compass HyStar, OtofControl (Bruker)
 
 \newpage
-# Certificates
+# Certificates & Courses
 
 ```{r}
 library(tibble)
@@ -140,7 +145,7 @@ tribble(
   "Data Science 201: Going Further With R: Tackling Clinical Laboratory Data Manipulation and Modeling", "2019", "The Association for Mass Spectrometry & Advances in the Clinical Lab (MSACL) Conference EU", "16 hrs",
   "Metabolomics 202: Approaches, Applications and Challenges", "2017", "The Association for Mass Spectrometry & Advances in the Clinical Lab (MSACL) Conference EU", "16 hrs"
 ) %>% 
-  detailed_entries(Certificate, Year, Organization, Hours)
+  detailed_entries(what = Certificate, when = Year, where = Organization, why = Hours)
 ```
 
 # Teaching and Mentorship
@@ -155,7 +160,7 @@ Moscow State University, Faculty of Chemistry, including two students' thesis su
 Moscow State University, Faculty of Biology", "2018-20",
 "Agilent advanced training courses at the Analytical centre of Lomonosov Moscow State University in LC, LC-MS", "2016-19"
 ) %>% 
-  detailed_entries(with = Course, what = Year)
+  detailed_entries(what = Course, when = Year)
 ```
 
 # Current Journal Roles
@@ -237,9 +242,8 @@ tribble(
 ```
 
 \newpage
-# Citation Statistics and Metrics
 
-```{r, fig.width=5, fig.height=4}
+```{r, fig.width=5, fig.height=4, include= F}
 library(scholar)
 library(stringr)
 library(tibble)
@@ -267,7 +271,7 @@ ggplot(ct, aes(year, cites)) +
   annotate("rect", xmin = 2020, xmax = 2021.7, ymin = 40, ymax = 65, fill = "lightblue", alpha = 0.5) +
   annotate("text", x = 2020, y = 52, label = multiline_text, size = 5.5, fontface = "bold", hjust = 0)+
   xlab("Year") + ylab("Citations")+ theme_classic(base_size = 16)+
-  labs(caption = "Data Source: Google Scholar")+
+  labs(caption = "Citation Statistics and Metrics Source: Google Scholar")+
   theme(plot.caption = element_text(color = "black", face = "italic", size = 10))
 
 ```
