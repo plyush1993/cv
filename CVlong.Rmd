@@ -29,7 +29,7 @@ tribble(
   ~ Degree, ~ Year, ~ Institution, ~ Where,
   "PhD (Chemistry)", "2017-22", "Lomonosov Moscow State University", "Moscow, Russia",
 #   "Postgraduate academic and pedagogical training (Chemistry)", "2017-21", "Lomonosov Moscow State University", "Moscow, Russia",
-  "MSc (Chemistry), GPA: 4.67", "2011-17", "Lomonosov Moscow State University", "Moscow, Russia"
+  "MSc (Chemistry), GPA: 93.4", "2011-17", "Lomonosov Moscow State University", "Moscow, Russia"
 ) %>% 
   detailed_entries(what = Degree, when = Year, with = Institution, where = Where)
 ```
@@ -52,6 +52,8 @@ p <- p[order(p$year, decreasing = T),]
 p <- filter(p, journal %in% c("Analytical methods", "Metabolites", 
                               "Analytical and Bioanalytical Chemistry", 
                               "Journal of Chromatography A", "Journal of Proteome Research"))
+ind <- which(str_detect(p$title, "Untargeted and targeted analysis of sarin poisoning biomar"))
+p[ind,1] <- paste(paste0(str_split(p[ind,1], ",")[[1]], c("*,", "*,", "*,", ",", "")), collapse = "")
 p %>% 
   detailed_entries(
     what = title,
@@ -88,12 +90,14 @@ tribble(
 ```
 
 \newpage
+
 # Professional Experience
 
 ```{r}
 library(tibble)
 tribble(
   ~ Job, ~ Year, ~ Where,
+  "Postdoctoral Fellow", "2025.01-\\\\now", "University of Haifa, Department of Marine Biology",
   "Graduate Researcher", "2022.12-\\\\2024.12", "Technion - Israel Institute of Technology, Biology Faculty",
     "Postdoctoral Research Fellow", "2022.03-\\\\2022.11", "Lomonosov Moscow State University, Chemistry Department",
   "Junior Research Associate", "2017.07-\\\\2022.02", "Lomonosov Moscow State University, Chemistry Department",
@@ -107,35 +111,36 @@ tribble(
 
 Instruments & techniques:
 
-- MS: SCAN, SIM, MRM, DDA, DIA, PASEF, TIMS
-- LC: RP, HILIC
-- Nano LC: Evosep One (Evosep)
-- LC-MS: IT-TOF (Shimadzu); Orbitrap Exploris 120, Orbitrap Q Exactive (Thermo); QTRAP 3200 (Sciex); 6470 (Agilent); timsTOF Pro (Bruker)
-- LC-DAD: 1100, 1200, 1290 Infinity (Agilent); Ultimate 3000 (Dionex); LC 20 (Shimadzu); Vanquish (Thermo)
-- LC-FLD: 1200 (Agilent); Ultimate 3000 (Dionex)
-- CE-UV: G1600AX, 7100 (Agilent)
-- GC-MS: GCMS-QP 2010 with SHS (Shimadzu); 7890 B (Agilent)
-- GC-FID: GC-2010 (Shimadzu)
+-   MS: SCAN, SIM, MRM, DDA, DIA, PASEF, TIMS
+-   LC: RP, HILIC
+-   Nano LC: Evosep One (Evosep)
+-   LC-MS: IT-TOF (Shimadzu); Orbitrap Exploris 120, Orbitrap Q Exactive (Thermo); QTRAP 3200 (Sciex); 6470 (Agilent); timsTOF Pro (Bruker)
+-   LC-DAD: 1100, 1200, 1290 Infinity (Agilent); Ultimate 3000 (Dionex); LC 20 (Shimadzu); Vanquish (Thermo)
+-   LC-FLD: 1200 (Agilent); Ultimate 3000 (Dionex)
+-   CE-UV: G1600AX, 7100 (Agilent)
+-   GC-MS: GCMS-QP 2010 with SHS (Shimadzu); 7890 B (Agilent)
+-   GC-FID: GC-2010 (Shimadzu)
 
 Basic lab skills:
 
-- Extraction from liquid & solid media
-- SPE, LLE, Soxhlet extraction, centrifugation, membrane filtering
-- UV/Vis analysis, pH measurement 
-- Preparation of calibration curves, QC/QA programs performing, daily maintenance
-- Cell culture maintenance
+-   Extraction from liquid & solid media
+-   SPE, LLE, Soxhlet extraction, centrifugation, membrane filtering
+-   UV/Vis analysis, pH measurement
+-   Preparation of calibration curves, QC/QA programs performing, daily maintenance
+-   Cell culture maintenance
 
 Programming, Software & Bioinformatics tools:
 
-- R language independent user
-- tidyverse, tidymass, RforMassSpectrometry families of packages
-- xcms, CAMERA, IPO, MSnbase, MSstats, Biostrings, seqinr, rcdk, caret, H2O, keras, xgboost, ggplot2, dplyr, data.table, RMarkdown, plotly 
-- tool development list: [URL](https://github.com/plyush1993?tab=repositories)
-- full list of R packages that is used for metabolomics processing: [URL](https://github.com/plyush1993/OUKS/blob/main/Used%20packages.pdf)
-- GUI software: MetaboAnalyst, MS-DIAL, MZmine, MS-FINDER, SIRIUS+CSI:FingerID, CFM-ID, MetFrag, GNPS, Open Babel, PathVisio, FragPipe, DIA-NN, Alphapept
-- Vendor Software: LabSolutions (Shimadzu); XCalibur, FreeStyle, Compound Discoverer (Thermo); OpenLab, MassHunter, ChemStation (Agilent); Compass HyStar, OtofControl (Bruker)
+-   R language independent user
+-   tidyverse, tidymass, RforMassSpectrometry families of packages
+-   xcms, CAMERA, IPO, MSnbase, MSstats, Biostrings, seqinr, rcdk, caret, H2O, keras, xgboost, ggplot2, dplyr, data.table, RMarkdown, plotly
+-   tool development list: [URL](https://github.com/plyush1993?tab=repositories)
+-   full list of R packages that is used for metabolomics processing: [URL](https://github.com/plyush1993/OUKS/blob/main/Used%20packages.pdf)
+-   GUI software: MetaboAnalyst, MS-DIAL, MZmine, MS-FINDER, SIRIUS+CSI:FingerID, CFM-ID, MetFrag, GNPS, Open Babel, PathVisio, FragPipe, DIA-NN, Alphapept
+-   Vendor Software: LabSolutions (Shimadzu); XCalibur, FreeStyle, Compound Discoverer (Thermo); OpenLab, MassHunter, ChemStation (Agilent); Compass HyStar, OtofControl (Bruker)
 
 \newpage
+
 # Certificates & Courses
 
 ```{r}
@@ -202,6 +207,12 @@ ct <- get_citation_history(id)
 y <- unique(p1[order(p1$year, decreasing = F),]$year)
 p <- p1[,c(2, 1, 3, 6, 4, 5)]
 p$cites <- paste0("[Citations: ", p$cites, "]")
+ind <- which(str_detect(p$title, "Untargeted and targeted analysis of sarin poisoning biomar"))
+p[ind,1] <- paste(paste0(str_split(p[ind,1], ",")[[1]], c("*,", "*,", "*,", ",", "")),
+collapse = "")
+ind2 <- which(str_detect(p$title, "Monoammonium phosphate effects on glyphosate in soils:"))
+p[ind2,1] <- paste(paste0(str_split(p[ind2,1], ",")[[1]], c(",", ",", ",", ", IV Plyushchenko, ", "")),
+collapse = "")
 p <- p[order(p$year, decreasing = T),]
 p %>% 
   detailed_entries(
