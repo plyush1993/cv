@@ -8,11 +8,11 @@ VisualResume::VisualResume(
   titles.right = c("ORCID:0000-0003-3883-4695", "plyushchenko.ivan@gmail.com", "Full Resume: https://github.com/plyush1993/cv/blob/main/CVlong.pdf"),
   titles.right.cex = c(2, 2, 2),
   timeline.labels = c("Education", "Work Experience"),
-  timeline = data.frame(title = c("Lomonosov MSU", "Lomonosov MSU", "Technion", "Lomonosov MSU", "Lomonosov MSU", "Lomonosov MSU", "Lomonosov MSU", "Analytical centre"),
-                        sub = c("Specialist (equivalent to MSc)", "PhD", "Graduate Researcher", "Teaching", "Postdoctoral Research Fellow", "Junior research associate", "Lab technician", "Analytical chemist"),
-                        start = c(2011.9, 2017.10, 2022.12, 2018, 2022.03, 2017.07, 2016.05, 2015.05),
-                        end = c(2017.06, 2022.03, 2024.12, 2022, 2022.11, 2022.02, 2017.06, 2018.06),
-                        side = c(1, 1, 0, 0, 0, 0, 0, 0)),
+  timeline = data.frame(title = c("Lomonosov MSU", "Lomonosov MSU", "Technion", "UHaifa", "Lomonosov MSU", "Lomonosov MSU", "Lomonosov MSU", "Lomonosov MSU", "Analytical centre"),
+                        sub = c("Specialist (equivalent to MSc)", "PhD", "Graduate Researcher", "Postdoctoral Research Fellow", "Teaching", "Postdoctoral Research Fellow", "Junior research associate", "Lab technician", "Analytical chemist"),
+                        start = c(2011.9, 2017.10, 2023, 2025.01, 2018, 2022.03, 2017.07, 2016.05, 2015.05),
+                        end = c(2017.06, 2022.03, 2025, 2026, 2022, 2023, 2022.02, 2017.06, 2018.06),
+                        side = c(1, 1, 1, 1, 0, 1, 0, 0, 0)),
   milestones = data.frame(title = c("Specialist (equivalent to MSc)", "PhD"),
                           sub = c("Chemistry", "Chemistry"),
                           year = c(2017, 2022)),
@@ -25,7 +25,7 @@ VisualResume::VisualResume(
   interests = list("bioinformatics" = c(rep("xcms", 5), rep("Bioconductor", 5), rep("MetaboAnalyst", 5), rep("MS-DIAL", 3)),
                    "analytical chemistry" = c(rep("LC", 5), rep("GC-MS", 3), rep("LC-MS", 5), rep("SPE, LLE", 3)),
                    "statistics" = c(rep("R", 5), rep("Machine Learning", 5), rep("caret", 5), rep("xgboost", 5))),
-  year.steps = 2
+  year.steps = 1
 )
 
 ################################################################
