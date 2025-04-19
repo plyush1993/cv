@@ -147,7 +147,7 @@ Programming, Software & Bioinformatics tools:
 library(tibble)
 tribble(
   ~ Certificate, ~ Year, ~ Organization, ~ Hours, 
-  "Introduction to Metabolomics", "2025", "Technion, Faculty of Medicine", "24h",
+  "Introduction to Metabolomics", "2025", "Technion, Faculty of Medicine", "24 hrs",
   "Data Science 201: Going Further With R: Tackling Clinical Laboratory Data Manipulation and Modeling", "2019", "The Association for Mass Spectrometry & Advances in the Clinical Lab (MSACL) Conference EU", "16 hrs",
   "Metabolomics 202: Approaches, Applications and Challenges", "2017", "The Association for Mass Spectrometry & Advances in the Clinical Lab (MSACL) Conference EU", "16 hrs"
 ) %>% 
