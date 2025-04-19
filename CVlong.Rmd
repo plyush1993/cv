@@ -127,7 +127,7 @@ Basic lab skills:
 -   SPE, LLE, Soxhlet extraction, centrifugation, membrane filtering
 -   UV/Vis analysis, pH measurement
 -   Preparation of calibration curves, QC/QA programs performing, daily maintenance
--   Cell culture maintenance
+-   Maintenance of mammalian cell lines and bacterial cultures
 
 Programming, Software & Bioinformatics tools:
 
@@ -147,6 +147,7 @@ Programming, Software & Bioinformatics tools:
 library(tibble)
 tribble(
   ~ Certificate, ~ Year, ~ Organization, ~ Hours, 
+  "Introduction to Metabolomics", "2025", "Technion, Faculty of Medicine", "24h",
   "Data Science 201: Going Further With R: Tackling Clinical Laboratory Data Manipulation and Modeling", "2019", "The Association for Mass Spectrometry & Advances in the Clinical Lab (MSACL) Conference EU", "16 hrs",
   "Metabolomics 202: Approaches, Applications and Challenges", "2017", "The Association for Mass Spectrometry & Advances in the Clinical Lab (MSACL) Conference EU", "16 hrs"
 ) %>% 
@@ -188,7 +189,8 @@ tribble(
   "BMC Bioinformatics", "Peer Reviewer",
   "BMC gastroenterology", "Peer Reviewer",
   "Nutrition & metabolism", "Peer Reviewer",
-  "npj Systems Biology and Applications", "Peer Reviewer"
+  "npj Systems Biology and Applications", "Peer Reviewer",
+  "Journal of Computational Chemistry", "Peer Reviewer"
 ) %>% 
   detailed_entries(with = Current_journal_roles, what = Journal)
 ```
