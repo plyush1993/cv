@@ -1,8 +1,8 @@
 ---
 name: Ivan
 surname: Plyushchenko
-position: ""
-address: ""
+position: "Postdoctoral Fellow"
+address: "University of Haifa, Department of Marine Biology"
 aboutme: ""
 profilepic: ""
 email: "plyushchenko.ivan@gmail.com"
