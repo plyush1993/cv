@@ -133,10 +133,10 @@ Programming, Software & Bioinformatics tools:
 
 -   R language independent user
 -   tidyverse, tidymass, RforMassSpectrometry families of packages
--   xcms, CAMERA, IPO, MSnbase, MSstats, Biostrings, seqinr, rcdk, caret, H2O, keras, xgboost, ggplot2, dplyr, data.table, RMarkdown, plotly
+-   xcms, CAMERA, IPO, MSnbase, MSstats, Biostrings, seqinr, rcdk, caret, H2O, keras, xgboost, ggplot2, dplyr, data.table, RMarkdown, plotly, Shiny
 -   tool development list: [URL](https://github.com/plyush1993?tab=repositories)
 -   full list of R packages that is used for metabolomics processing: [URL](https://github.com/plyush1993/OUKS/blob/main/Used%20packages.pdf)
--   GUI software: MetaboAnalyst, MS-DIAL, MZmine, MS-FINDER, SIRIUS+CSI:FingerID, CFM-ID, MetFrag, GNPS, Open Babel, PathVisio, FragPipe, DIA-NN, Alphapept
+-   GUI software: MetaboAnalyst, MS-DIAL, MZmine, MS-FINDER, Maven, SIRIUS+CSI:FingerID, CFM-ID, MetFrag, GNPS, Open Babel, PathVisio, FragPipe, DIA-NN, Alphapept
 -   Vendor Software: LabSolutions (Shimadzu); XCalibur, FreeStyle, Compound Discoverer (Thermo); OpenLab, MassHunter, ChemStation (Agilent); Compass HyStar, OtofControl (Bruker)
 
 \newpage
