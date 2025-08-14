@@ -190,7 +190,10 @@ tribble(
   "BMC gastroenterology", "Peer Reviewer",
   "Nutrition & metabolism", "Peer Reviewer",
   "npj Systems Biology and Applications", "Peer Reviewer",
-  "Journal of Computational Chemistry", "Peer Reviewer"
+  "Journal of Computational Chemistry", "Peer Reviewer",
+  "BMC Cancer", "Peer Reviewer",
+  "ACS Omega", "Peer Reviewer",
+  "Metabolomics", "Peer Reviewer"
 ) %>% 
   detailed_entries(with = Current_journal_roles, what = Journal)
 ```
