@@ -193,7 +193,8 @@ tribble(
   "Journal of Computational Chemistry", "Peer Reviewer",
   "BMC Cancer", "Peer Reviewer",
   "ACS Omega", "Peer Reviewer",
-  "Metabolomics", "Peer Reviewer"
+  "Metabolomics", "Peer Reviewer",
+  "Journal of Biologically Active Products from Nature", "Peer Reviewer"
 ) %>% 
   detailed_entries(with = Current_journal_roles, what = Journal)
 ```
