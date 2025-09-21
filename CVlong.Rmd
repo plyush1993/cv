@@ -80,6 +80,7 @@ tribble(
 library(tibble)
 tribble(
   ~ Award, ~ Year, ~ Place,
+  "Institutional Postdoctoral Fellowship", "2025-26", "University of Haifa, Israel", 
   "Winner of the competition of works contributing to the solution of problems of the Development Program of Moscow State University in the nomination 'Outstanding scientific articles'", "2022", "Moscow, Russia",
   "Competition of the Russian Academy of Sciences of scientific works of young scientists in chromatography in honor of the 150th anniversary of the birth M.S. Tsvet", "2022", "Moscow, Russia",
   "The Association for Mass Spectrometry & Advances in the Clinical Lab (MSACL) Conference EU Travel Grant", "2019", "Salzburg, Austria",
