@@ -14,6 +14,14 @@ docname: CV
 headcolor:
 output: 
   vitae::twentyseconds
+latex_engine: xelatex
+header-includes:
+  - \providecommand{\cvpronouns}[1]{}
+  - \providecommand{\cvorcid}[1]{}
+  - \providecommand{\cvscholar}[1]{}
+  - \providecommand{\cvgooglescholar}[1]{}
+  - \providecommand{\cvresearchgate}[1]{}
+  - \providecommand{\cvhomepage}[1]{}
 ---
 
 ```{r setup, include=FALSE}
@@ -37,29 +45,44 @@ tribble(
 # Key Publications
 
 ```{r}
-library(scholar)
+library(orcidtr)
+library(data.table)
 library(stringr)
+library(dplyr)
 library(tibble)
+library(vitae)
 library(ggthemes)
 library(ggplot2)
-id <- 'Mz4nxtwAAAAJ'
-p1 <- get_publications(id)
-ct <- get_citation_history(id)
-y <- unique(p1[order(p1$year, decreasing = F),]$year)
-p <- p1[,c(2, 1, 3, 6, 4, 5)]
-p$cites <- paste0("[Citations: ", p$cites, "]")
-p <- p[order(p$year, decreasing = T),]
-p <- filter(p, journal %in% c("Analytical methods", "Metabolites", 
-                              "Analytical and Bioanalytical Chemistry", 
-                              "Journal of Chromatography A", "Journal of Proteome Research"))
-ind <- which(str_detect(p$title, "Untargeted and targeted analysis of sarin poisoning biomar"))
-p[ind,1] <- paste(paste0(str_split(p[ind,1], ",")[[1]], c("*,", "*,", "*,", ",", "")), collapse = "")
-p %>% 
+
+id <- "0000-0003-3883-4695"
+
+works <- as.data.table(orcid_works(id))
+
+keep_journals <- c(
+  "Analytical methods",
+  "Metabolites",
+  "Analytical and Bioanalytical Chemistry",
+  "Journal of Chromatography A",
+  "Journal of Proteome Research"
+)
+
+p <- works[
+  type == "journal-article",
+  .(
+    title = as.character(title),
+    year = as.integer(str_extract(publication_date, "\\d{4}")),
+    journal = as.character(journal)
+  )
+][
+  journal %in% keep_journals
+][
+  order(-year, title)
+]
+
+p %>%
   detailed_entries(
     what = title,
     when = year,
-    with = author,
-    #where = paste(journal, cites)
     where = journal
   )
 ```
@@ -98,14 +121,14 @@ tribble(
 library(tibble)
 tribble(
   ~ Job, ~ Year, ~ Where,
-  "Postdoctoral Fellow", "2025.01-\\\\now", "University of Haifa, Department of Marine Biology",
-  "Graduate Researcher", "2022.12-\\\\2024.12", "Technion - Israel Institute of Technology, Biology Faculty",
-    "Postdoctoral Research Fellow", "2022.03-\\\\2022.11", "Lomonosov Moscow State University, Chemistry Department",
-  "Junior Research Associate", "2017.07-\\\\2022.02", "Lomonosov Moscow State University, Chemistry Department",
-  "Lab Technician", "2016.05-\\\\2017.06", "Lomonosov Moscow State University, Chemistry Department",
-  "Analytical Chemist", "2015.05-\\\\2018.06", "Analytical centre of Lomonosov Moscow State University"
+  "Postdoctoral Fellow", "2025.01-present", "University of Haifa, Department of Marine Biology",
+  "Graduate Researcher", "2022.12-2024.12", "Technion - Israel Institute of Technology, Biology Faculty",
+    "Postdoctoral Research Fellow", "2022.03-2022.11", "Lomonosov Moscow State University, Chemistry Department",
+  "Junior Research Associate", "2017.07-2022.02", "Lomonosov Moscow State University, Chemistry Department",
+  "Lab Technician", "2016.05-2017.06", "Lomonosov Moscow State University, Chemistry Department",
+  "Analytical Chemist", "2015.05-2018.06", "Analytical centre of Lomonosov Moscow State University"
 ) %>% 
-  detailed_entries(what = Job, when = Year, where = Where, .protect=F)
+  detailed_entries(what = Job, when = Year, where = Where)
 ```
 
 # Skills & Proficiencies
@@ -140,7 +163,7 @@ Programming, Software & Bioinformatics tools:
 -   R packages list: MetCorR [URL](https://github.com/plyush1993/MetCorR)
 -   tool development list: [URL](https://github.com/plyush1993?tab=repositories)
 -   full list of R packages that is used for metabolomics processing: [URL](https://github.com/plyush1993/OUKS/blob/main/Used%20packages.pdf)
--   GUI software: MetaboAnalyst, MS-DIAL, MZmine, MS-FINDER, Maven, SIRIUS+CSI:FingerID, CFM-ID, MetFrag, GNPS, Open Babel, PathVisio, FragPipe, DIA-NN, Alphapept
+-   GUI software: MetaboAnalyst, MS-DIAL, MZmine, MS-FINDER, Maven, SIRIUS, CFM-ID, MetFrag, GNPS, Open Babel, PathVisio, FragPipe, DIA-NN, Alphapept
 -   Vendor Software: LabSolutions (Shimadzu); XCalibur, FreeStyle, Compound Discoverer (Thermo); OpenLab, MassHunter, ChemStation (Agilent); Compass HyStar, OtofControl (Bruker)
 
 \newpage
@@ -180,29 +203,31 @@ Moscow State University, Faculty of Biology", "2018-20",
 # Publication List
 
 ```{r}
-library(scholar)
+library(orcidtr)
+library(data.table)
 library(stringr)
-library(tibble)
-library(ggthemes)
-library(ggplot2)
-id <- 'Mz4nxtwAAAAJ'
-p1 <- get_publications(id)
-ct <- get_citation_history(id)
-y <- unique(p1[order(p1$year, decreasing = F),]$year)
-p <- p1[,c(2, 1, 3, 6, 4, 5)]
-p$cites <- paste0("[Citations: ", p$cites, "]")
-ind <- which(str_detect(p$title, "Untargeted and targeted analysis of sarin poisoning biomar"))
-p[ind,1] <- paste(paste0(str_split(p[ind,1], ",")[[1]], c("*,", "*,", "*,", ",", "")),
-collapse = "")
-ind2 <- which(str_detect(p$title, "Monoammonium phosphate effects on glyphosate in soils:"))
-p[ind2,1] <- paste(paste0(str_split(p[ind2,1], ",")[[1]], c(",", ",", ",", ", IV Plyushchenko, ", "")),
-collapse = "")
-p <- p[order(p$year, decreasing = T),]
+library(dplyr)
+library(vitae)
+
+id <- "0000-0003-3883-4695"
+
+works <- orcid_works(id)
+
+p <- as.data.table(works)[
+  type == "journal-article",
+  .(
+    title = title,
+    journal = journal,
+    year = as.integer(str_extract(publication_date, "\\d{4}"))
+  )
+][
+  order(-year, title)
+]
+
 p %>% 
   detailed_entries(
     what = title,
     when = year,
-    with = author,
     where = journal
   )
 ```
@@ -230,7 +255,7 @@ tribble(
    "Typical LC-MS metabolomics workflow for profiling urine samples of patients with colorectal cancer", 
   "XXII International Mass Spectrometry Conference, Florence, Italy", "2018",
   "Simple & Robust Approach in Urinary Metabolomics Based on UPLC-MS for Preoperative Colorectal Cancer Diagnostics", "MSACL 2017 EU, Salzburg, Austria", "2017",
-  "Complexation of sulfo-β-cyclodextrin with fenoterol. Electrophoretic and spectroscopic study", 
+  "Complexation of sulfo-beta-cyclodextrin with fenoterol. Electrophoretic and spectroscopic study", 
   "VIIIth International Symposium Design and Synthesis of Supramolecular Architectures, Kazan, Russia", "2016" 
 ) %>% 
   detailed_entries(with = Conference, what = Title, when = Date)
@@ -261,42 +286,8 @@ tribble(
   "BMC Cancer", "Peer Reviewer",
   "ACS Omega", "Peer Reviewer",
   "Metabolomics", "Peer Reviewer",
-  "Journal of Biologically Active Products from Nature", "Peer Reviewer"
+  "Journal of Biologically Active Products from Nature", "Peer Reviewer",
+  "Communications Medicine", "Peer Reviewer"
 ) %>% 
   detailed_entries(with = Current_journal_roles, what = Journal)
-```
-
-\newpage
-
-```{r, fig.width=5, fig.height=4, include= F}
-library(scholar)
-library(stringr)
-library(tibble)
-library(ggthemes)
-library(ggplot2)
-
-id <- 'Mz4nxtwAAAAJ'
-p1 <- get_publications(id)
-ct <- get_citation_history(id)
-y <- unique(p1[order(p1$year, decreasing = F),]$year)
-p <- p1[,c(2, 1, 3, 6, 4, 5)]
-p$cites <- paste0("[Citations: ", p$cites, "]")
-p <- p[order(p$year, decreasing = T),]
-pr <- get_profile(id)
-
-line1 <- paste0("h index: ", pr$h_index)
-line2 <- paste0("i10 index: ", pr$i10_index)
-line3 <- paste0("Total cites: ", pr$total_cites)
-multiline_text <- paste(line1, line2, line3, sep = "\n")
-
-library(ggtext)
-ggplot(ct, aes(year, cites)) +
-  geom_segment(aes(xend = year, yend = 0), size=1, color='darkgrey') +
-  geom_point(size=5, color="red", fill=alpha("orange", 0.3), alpha=0.7, shape=21, stroke=2.5) + 
-  annotate("rect", xmin = 2020, xmax = 2021.7, ymin = 40, ymax = 65, fill = "lightblue", alpha = 0.5) +
-  annotate("text", x = 2020, y = 52, label = multiline_text, size = 5.5, fontface = "bold", hjust = 0)+
-  xlab("Year") + ylab("Citations")+ theme_classic(base_size = 16)+
-  labs(caption = "Citation Statistics and Metrics Source: Google Scholar")+
-  theme(plot.caption = element_text(color = "black", face = "italic", size = 10))
-
 ```
