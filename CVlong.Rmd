@@ -238,6 +238,12 @@ p %>%
 library(tibble)
 tribble(
   ~ Title, ~ Conference, ~ Date,
+  "Unraveling the Complexity of Microalgal EPS: A Multi-Analytical Approach to Polysaccharide Composition and Characterization",
+  "ASMS 74th, San Diego, USA", "2026",
+  "Heat, Halogens, and Holobionts: LC-MS/MS Insights into Seasonal Metabolite Dynamics in Asparagopsis taxiformis",
+  "ASMS 74th, San Diego, USA", "2026",
+  "Mass spectrometry reveals metabolic rewiring in Bacillus subtilis following loss of surfactin and plipastatin",
+  "ASMS 74th, San Diego, USA", "2026",
   "Untargeted urinary metabolomics for identification of bladder cancer biomarkers using HPLC-MS",
   "Euroanalysis XXI, Geneva, Switzerland", "2023",
   "Application of gradient boosting machine for signal processing in LC-MS metabolomics", 
@@ -287,7 +293,8 @@ tribble(
   "ACS Omega", "Peer Reviewer",
   "Metabolomics", "Peer Reviewer",
   "Journal of Biologically Active Products from Nature", "Peer Reviewer",
-  "Communications Medicine", "Peer Reviewer"
+  "Communications Medicine", "Peer Reviewer",
+  "Discover Artificial Intelligence", "Peer Reviewer"
 ) %>% 
   detailed_entries(with = Current_journal_roles, what = Journal)
 ```
