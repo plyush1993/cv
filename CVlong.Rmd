@@ -294,7 +294,8 @@ tribble(
   "Metabolomics", "Peer Reviewer",
   "Journal of Biologically Active Products from Nature", "Peer Reviewer",
   "Communications Medicine", "Peer Reviewer",
-  "Discover Artificial Intelligence", "Peer Reviewer"
+  "Discover Artificial Intelligence", "Peer Reviewer",
+  "BMC Research Notes", "Peer Reviewer"
 ) %>% 
   detailed_entries(with = Current_journal_roles, what = Journal)
 ```
