@@ -298,7 +298,8 @@ tribble(
   "Communications Medicine", "Peer Reviewer",
   "Discover Artificial Intelligence", "Peer Reviewer",
   "BMC Research Notes", "Peer Reviewer",
-  "BMC Oral Health", "Peer Reviewer"
+  "BMC Oral Health", "Peer Reviewer",
+  "BMC Digital Health", "Peer Reviewer"
 ) %>% 
   detailed_entries(with = Current_journal_roles, what = Journal)
 ```
